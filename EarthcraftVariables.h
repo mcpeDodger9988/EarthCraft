@@ -1,6 +1,6 @@
 // in EarthcraftVariables.h
 //used in EarthcraftLayers.cpp
-int blockIds[8] = {0,1,2,3,4,5,6,7};
+int blockIds[10] = {0,1,2,3,4,5,6,7,8,9};
 int blockId1[6] = {1,4,1,1,4,1}; //layers 1-4
 int blockId2[6] = {1,2,6,1,2,1}; //layers 5-15
 int blockId3[5] = {1,2,6,2,1}; //Tx layers
@@ -12,13 +12,15 @@ int cobblestone = blockIds[3];
 int bedrock = blockIds[4];
 int water = blockIds[5];
 int coal = blockIds[6];
-int grassyDirt = blockIds[7];
+int grassBlock = blockIds[7];
+int lava = blockIds[8];
+int sand = blockIds[9];
 int layerA[32] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 int layer0[32] = {4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4};
-int layer1[32];
+/*int layer1[32];
 int layer2[32];
 int layer3[32];
-int layer4[32];
+int layer4[32];*/
 int layer5[32];
 int layer6[32];
 int layer7[32];
@@ -30,13 +32,15 @@ int layer12[32];
 int layer13[32];
 int layer14[32];
 int layer15[32] = {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2};
+//layerT are the layers that will form the top layers of the world in-game
+//Currently this only forms hills (with a 1/2 rise-run relation) in-game, it will eventually form the Earth
 
 int layerT[15][32] = {
   {0,0,0,0,0,0,0,0,0,0,0,0,2,2,7,7,7,7,2,2,0,0,0,0,0,0,0,0,0,0,0,0}, //row [0]
   {0,0,0,0,0,0,0,0,0,0,0,2,2,7,7,0,0,7,7,2,2,0,0,0,0,0,0,0,0,0,0,0}, //row [1]
   {0,0,0,0,0,0,0,0,0,0,2,2,7,7,0,0,0,0,7,7,2,2,0,0,0,0,0,0,0,0,0,0}, //row [2]
   {0,0,0,0,0,0,0,0,0,2,2,7,7,0,0,0,0,0,0,7,7,2,2,0,0,0,0,0,0,0,0,0}, //row [3]
-  {0,0,0,0,0,0,0,0,2,2,7,7,0,0,0,0,0,0,0,0,7,7,2,2,0,0,0,0,0,0,0,0}, //row [4]
+  {0,0,0,0,0,0,0,0,2,2,7,7,0,0,0,0,0,0,0,7,7,2,2,0,0,0,0,0,0,0,0}, //row [4]
   {0,0,0,0,0,0,0,2,2,7,7,0,0,0,0,0,0,0,0,0,0,7,7,2,2,0,0,0,0,0,0,0}, //row [5]
   {0,0,0,0,0,0,2,2,7,7,0,0,0,0,0,0,0,0,0,0,0,0,7,7,2,2,0,0,0,0,0,0}, //row [6]
   {0,0,0,0,0,2,2,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,2,2,0,0,0,0,0}, //row [7]
@@ -50,6 +54,7 @@ int layerT[15][32] = {
 }; //int layerT
 
 //variables used to hold and assign the random blockId generated
+int randN;
 int rand1; //layer1
 int rand2; //layer2
 int rand3; //layer3
